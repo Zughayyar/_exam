@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Pies</title>
+    {% load static %} 
+    <link rel="stylesheet" href="{% static 'css/my_css/pies_vote.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.css' %}">
+
+</head>
+<body>
+    <nav><a href="/signout">Sign Out</a></nav>
+    <div class="container">
+        <div class="pie">
+            <h2>{{pie.name}}</h2>
+            <h3>By: {{pie.baker.first_name}}</h3>
+            <p>{{pie.filing}}</p>
+            <p>with an {{pie.crust}}</p>
+            {% if user in pie.voters.all %}
+            <form class="form-voted" action="/pies/remove_user_vote_pie" method="post">
+                {% csrf_token %} 
+                <label>You voted for this</label>
+                <input type="hidden" name="pie_id" value="{{pie.id}}">
+                <button type="submit" class="btn btn-link">Remove Vote</button>
+            </form>
+            {% else %}
+            <form class="form-vote" action="/pies/user_vote_pie" method="post">
+                {% csrf_token %} 
+                <label>Cast a Vote!</label>
+                <input type="hidden" name="pie_id" value="{{pie.id}}">
+                <button type="submit" class="btn btn-success">Delicious!</button>
+            </form>
+            {% endif %}
+
+        </div>
+        <a href="/dashboard"> << Back to my Pies</a>
+    </div>
+
+
+    <script src="{% static 'js/bootstrap/bootstrap.js' %}" ></script>
+</body>
+</html>

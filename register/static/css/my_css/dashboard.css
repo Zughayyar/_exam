@@ -1,0 +1,52 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+em {
+    color: darkblue;
+    text-decoration: underline;
+}
+
+nav {
+    width: 100vh;
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pies {
+    width: 100vh;
+    display: flex;
+}
+
+.pies-table {
+    width: 60vh;
+    height: 60vh;
+    display: inline-block;
+    padding: 2vh;
+}
+
+.pies-form {
+    width: 40vh;
+    height: 60vh;
+    display: inline-block;
+    padding: 2vh;
+}
+
+.messages {
+    color: red;
+}
+
+.form_del_pie {
+    display: inline;
+}

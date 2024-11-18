@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pies</title>
+    {% load static %} 
+    <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/my_css/index.css' %}">
+</head>
+<body>
+    <div class="page-title">
+        <h1>Eye on the Pies! </h1>
+    </div>
+    <div class="container">
+        <div class="register">
+            <form action="/register" method="post">
+                {% csrf_token %}
+                <h1>Registration</h1>
+                <div class="mb-3">
+                    <label class="form-label">First Name:</label>
+                    <input name="first_name" type="text" class="form-control" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Last Name:</label>
+                    <input name="last_name" type="text" class="form-control" aria-describedby="emailHelp">
+                </div>  
+                <div class="mb-3">
+                  <label class="form-label">Email:</label>
+                  <input name="email" type="email" class="form-control" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Password:</label>
+                  <input name="password" type="password" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Confirm Password:</label>
+                    <input name="re_password" type="password" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-primary">Register</button>
+            </form>
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li>{{message}}</li>
+                {% endfor %}
+            </ul>   
+            {% endif %}
+        </div>
+        <div class="login">
+            <form action="/login" method="post">
+                {% csrf_token %}
+                <h1>Login</h1>
+                <div class="mb-3">
+                    <label class="form-label">Email:</label>
+                    <input name="email" type="email" class="form-control" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <input name="password" type="password" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+    <script src="{% static 'js/bootstrap/bootstrap.js' %}" ></script>
+</body>
+</html>

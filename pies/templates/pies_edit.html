@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Pies</title>
+    {% load static %} 
+    <link rel="stylesheet" href="{% static 'css/my_css/pies_edit.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.css' %}">
+
+</head>
+<body>
+    <nav><a href="/signout">Sign Out</a></nav>
+    <div class="container">
+        <h2>Edit {{pie.name}}</em></h2>
+        <form action="/pies/edit/{{pie.id}}/update" method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input name="name" value="{{pie.name}}" type="text" class="form-control" id="name" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+                <label for="filing" class="form-label">Filing</label>
+                <input name="filing" value="{{pie.filing}}" type="text" class="form-control" id="filing" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+                <label for="crust" class="form-label">Crust</label>
+                <input name="crust" value="{{pie.crust}}" type="text" class="form-control" id="crust" aria-describedby="emailHelp">
+            </div>
+            <button type="submit" class="btn btn-primary">Update Pie</button>
+        </form>
+        <br>
+        <br>
+        <a href="/dashboard"> << Back to my Pies</a>
+    </div>
+
+
+    <script src="{% static 'js/bootstrap/bootstrap.js' %}" ></script>
+</body>
+</html>
