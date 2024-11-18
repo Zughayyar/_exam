@@ -6,7 +6,11 @@ from django.contrib import messages
 def index(request):
     if 'is_logged_in' not in request.session:
         request.session['is_logged_in'] = False
-    return render(request, "index.html")
+    if request.session['is_logged_in'] is False:
+        return render(request, "index.html")
+    else:
+        return redirect('/dashboard')
+    
 
 def dashboard(request):
     if request.session['is_logged_in'] is True:
